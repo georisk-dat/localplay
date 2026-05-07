@@ -28,20 +28,20 @@ jobs:
       - name: Instalar Android SDK
         uses: android-actions/setup-android@v3
 
-      # 4. Instala Gradle (el sistema de compilación de Android)
-      - name: Instalar Gradle
-        uses: gradle/actions/setup-gradle@v3
-        with:
-          gradle-version: '8.6'
-
-      # 5. Acepta las licencias del SDK automáticamente
+      # 4. Acepta las licencias del SDK automáticamente
       - name: Aceptar licencias Android
         run: yes | sdkmanager --licenses || true
+
+      # 5. Instala Gradle directo desde el servidor oficial (más confiable)
+      - name: Instalar Gradle 8.6
+        run: |
+          wget -q https://services.gradle.org/distributions/gradle-8.6-bin.zip -O /tmp/gradle.zip
+          unzip -q /tmp/gradle.zip -d /opt/gradle
+          echo "/opt/gradle/gradle-8.6/bin" >> $GITHUB_PATH
 
       # 6. ¡Compila la APK!
       - name: Compilar APK debug
         run: gradle assembleDebug
-        working-directory: ${{ github.workspace }}
 
       # 7. Guarda la APK como archivo descargable
       - name: Subir APK para descarga
