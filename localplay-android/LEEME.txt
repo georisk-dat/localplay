@@ -1,0 +1,164 @@
+╔═══════════════════════════════════════════════════════════════╗
+║           LocalPlay Android — APK Nativa                     ║
+║     ExoPlayer + Media3 · Sin internet · Sin tracking         ║
+╚═══════════════════════════════════════════════════════════════╝
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  ARQUITECTURA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  MainActivity.kt
+    Interfaz de usuario. Conecta al MusicService via
+    MediaController (Media3). Escanea el MediaStore del
+    dispositivo para obtener la biblioteca de música.
+
+  MusicService.kt
+    Servicio en foreground (tipo MEDIA_PLAYBACK). Contiene
+    el ExoPlayer. Media3 genera automáticamente:
+      • Notificación persistente con controles
+      • Integración con pantalla de bloqueo
+      • Controles de auriculares Bluetooth
+      • Android Auto
+      • Foco de audio (pausa en llamadas)
+
+  Track.kt          Modelo de datos de una pista
+  MusicAdapter.kt   RecyclerView para la lista de canciones
+
+  PERMISO INTERNET: NO DECLARADO EN MANIFEST
+    Sin ese permiso en AndroidManifest.xml, el sistema
+    operativo bloquea toda conexión de red a nivel de kernel.
+    Es imposible filtrar datos, sin importar el código.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  REQUISITOS PARA COMPILAR
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  • Android Studio Hedgehog (2023.1.1) o más reciente
+      https://developer.android.com/studio
+  • JDK 17 (incluido en Android Studio)
+  • Android SDK API 34 (se instala automáticamente)
+  • ~4 GB de espacio en disco para el SDK
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  PASOS PARA ABRIR Y COMPILAR
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  1. Abre Android Studio
+  2. File → Open → selecciona la carpeta "localplay-android"
+     (la que contiene settings.gradle.kts)
+  3. Espera que Gradle sincronice (puede tardar 5-10 min
+     la primera vez, descarga dependencias)
+  4. Si pide instalar SDK components → "Install" → aceptar
+  5. Conecta tu celular Android con USB (modo Depuración USB)
+     o usa el emulador
+
+  Para PROBAR (debug):
+    Menú Run → Run 'app'  (o Shift+F10)
+    La app se instala en el celular conectado.
+
+  Para APK de PRODUCCIÓN (firmada, optimizada):
+    Build → Generate Signed Bundle / APK
+    → APK → Next
+    → Create new keystore (primera vez)
+       • Guarda el archivo .jks en lugar seguro — sin él
+         no puedes actualizar la app en el futuro
+       • Anota el alias y contraseñas
+    → Selecciona "release" → Finish
+    El APK queda en:
+      app/release/app-release.apk
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  INSTALAR EL APK EN EL CELULAR
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Opción A — Desde Android Studio (debug, directo):
+    Run → Run 'app' con el celular conectado
+
+  Opción B — APK manual (sideload):
+    1. Copia app-release.apk al celular (USB, Drive, etc.)
+    2. En el celular: Ajustes → Aplicaciones →
+       Instalar apps desconocidas → activa para tu navegador
+    3. Abre el APK desde el administrador de archivos
+    4. Instalar
+
+  Opción C — ADB desde terminal:
+    adb install app/release/app-release.apk
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  PROBLEMAS FRECUENTES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  "Gradle sync failed":
+    File → Invalidate Caches → Invalidate and Restart
+
+  "SDK not found":
+    Tools → SDK Manager → instala Android 14 (API 34)
+
+  "No tracks appear":
+    El escaneo usa MediaStore. Asegúrate que los MP3 estén
+    en la carpeta Music/ del almacenamiento interno.
+    Android puede tardar en indexarlos — prueba con un
+    gestor de archivos para verificar que son visibles.
+
+  La app se detiene al cerrarla:
+    Esto es normal si no hay reproducción activa. Si hay
+    música sonando, el servicio sigue en foreground
+    (notificación visible) aunque la app esté cerrada.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  PERMISOS DECLARADOS (todos justificados)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  READ_MEDIA_AUDIO              → leer música (Android 13+)
+  READ_EXTERNAL_STORAGE         → leer música (Android < 13)
+  FOREGROUND_SERVICE            → notificación persistente
+  FOREGROUND_SERVICE_MEDIA_PLAYBACK → tipo correcto de servicio
+  WAKE_LOCK                     → CPU activa con pantalla apagada
+
+  NO HAY: INTERNET, CAMERA, CONTACTS, LOCATION,
+          MICROPHONE, ni ningún permiso sensible adicional.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  ESTRUCTURA DEL PROYECTO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  localplay-android/
+  ├── settings.gradle.kts        Nombre del proyecto
+  ├── build.gradle.kts           Plugins globales
+  ├── gradle.properties          Configuración JVM
+  └── app/
+      ├── build.gradle.kts       Dependencias y SDK
+      ├── proguard-rules.pro     Reglas de ofuscación
+      └── src/main/
+          ├── AndroidManifest.xml
+          ├── kotlin/cl/localplay/
+          │   ├── MainActivity.kt
+          │   ├── MusicService.kt
+          │   ├── MusicAdapter.kt
+          │   └── Track.kt
+          └── res/
+              ├── layout/
+              │   ├── activity_main.xml
+              │   └── item_track.xml
+              ├── drawable/       Íconos vectoriales
+              ├── color/          Selectores de color
+              └── values/
+                  ├── colors.xml
+                  ├── strings.xml
+                  └── themes.xml
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  POSIBLES MEJORAS FUTURAS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  □ Widget en pantalla de inicio (AppWidgetProvider)
+  □ Equalizer nativo (AudioEffect API)
+  □ Soporte carpetas / explorador de archivos
+  □ Tema claro opcional
+  □ Gestos táctiles (swipe para siguiente)
+  □ Temporizador de apagado (sleep timer)
+  □ Playlists guardadas en Room DB
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Hecho con ♪ — sin publicidad, sin rastreo, sin excusas.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

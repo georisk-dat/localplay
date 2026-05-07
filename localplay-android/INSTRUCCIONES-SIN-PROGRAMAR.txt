@@ -1,0 +1,166 @@
+╔═══════════════════════════════════════════════════════════════╗
+║       CÓMO OBTENER TU APK — SIN INSTALAR NADA               ║
+║       Para usuarios finales, sin Android Studio              ║
+╚═══════════════════════════════════════════════════════════════╝
+
+  La idea: GitHub tiene computadoras en la nube que compilan
+  la app por ti. Tú subes los archivos, esperas 5 minutos,
+  y descargas el APK terminado. Gratis.
+
+  TIEMPO TOTAL: ~15 minutos (la mayoría esperando que compile)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  PASO 1 — Crear cuenta en GitHub (si no tienes)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  1. Ve a: https://github.com
+  2. Clic en "Sign up" (arriba a la derecha)
+  3. Ingresa tu email, una contraseña, un nombre de usuario
+  4. Verifica tu email
+  ✓ Listo — cuenta creada
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  PASO 2 — Crear un repositorio (carpeta en la nube)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  1. Estando en github.com con sesión iniciada:
+     Clic en el botón verde "New" (esquina superior izquierda)
+     — o ve a: https://github.com/new
+
+  2. Rellena el formulario:
+     • Repository name: localplay
+     • Description: Mi reproductor de música local
+     • Selecciona: ○ Public   (necesario para Actions gratis)
+     • NO marques nada más
+
+  3. Clic en "Create repository" (botón verde abajo)
+
+  ✓ Aparece una página con tu repositorio vacío
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  PASO 3 — Subir los archivos del proyecto
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  En la página de tu repositorio vacío verás el texto:
+  "uploading an existing file"
+
+  1. Clic en "uploading an existing file"
+
+  2. IMPORTANTE: Descomprime el ZIP "localplay-android.zip"
+     primero en tu computador. Queda una carpeta
+     "localplay-android" con todo adentro.
+
+  3. Arrastra TODA la carpeta "localplay-android" al área
+     de carga de GitHub (el recuadro punteado que dice
+     "Drag files here")
+
+     ⚠ Si GitHub no acepta arrastrar carpetas:
+       Arrastra los archivos de adentro uno por uno,
+       manteniendo la estructura de carpetas.
+       Alternativamente, usa el método de la terminal
+       (ver PASO 3B más abajo).
+
+  4. Scroll hacia abajo → "Commit changes" (botón verde)
+  5. Clic en "Commit changes"
+
+  ✓ Tus archivos están en GitHub
+
+  ─────────────────────────────────────────
+  PASO 3B (alternativa más fácil con GitHub Desktop)
+  ─────────────────────────────────────────
+  1. Descarga GitHub Desktop: https://desktop.github.com
+  2. Instálalo y conéctalo con tu cuenta de GitHub
+  3. File → Clone Repository → selecciona "localplay"
+  4. Copia todos los archivos del ZIP a la carpeta local
+  5. GitHub Desktop detecta los cambios automáticamente
+  6. Clic "Commit to main" → "Push origin"
+  ✓ Mucho más fácil para carpetas con subcarpetas
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  PASO 4 — Esperar que GitHub compile la APK
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Al subir los archivos, GitHub detecta automáticamente
+  el archivo ".github/workflows/build-apk.yml" y empieza
+  a compilar.
+
+  1. En tu repositorio, clic en la pestaña "Actions"
+     (barra superior: Code | Issues | Pull requests | Actions)
+
+  2. Verás "Compilar APK LocalPlay" con un círculo amarillo ●
+     Eso significa que está compilando (espera 3-8 minutos)
+
+  3. Cuando el círculo se vuelve verde ✓ → terminó bien
+     Si se vuelve rojo ✗ → hubo un error (escríbeme)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  PASO 5 — Descargar la APK
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  1. Clic en el workflow que terminó (el que tiene ✓ verde)
+  2. Scroll hacia abajo hasta la sección "Artifacts"
+  3. Verás "LocalPlay-APK" con un ícono de descarga
+  4. Clic → se descarga un ZIP con la APK adentro
+  5. Descomprime → obtienes "app-debug.apk"
+
+  ✓ ¡Tienes tu APK!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  PASO 6 — Instalar la APK en el celular
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Android bloquea por defecto la instalación de APKs
+  que no vienen de la Play Store. Hay que habilitarlo
+  una sola vez:
+
+  EN ANDROID 8 o superior (lo más probable):
+  1. Copia app-debug.apk al celular (cable USB, o
+     súbela a Google Drive y ábrela desde el celular)
+  2. En el celular, abre el archivo APK
+  3. Android pregunta: "¿Permitir instalar apps de
+     fuentes desconocidas?"
+  4. Toca "Configuración" → activa el permiso para
+     tu gestor de archivos o navegador
+  5. Vuelve atrás → "Instalar"
+
+  EN SAMSUNG con One UI:
+  Ajustes → Biometría y seguridad → Instalar apps desconocidas
+  → activa para "Mis Archivos"
+
+  ✓ LocalPlay instalada — aparece en tu cajón de apps
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  PRIMER USO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  1. Abre LocalPlay
+  2. Te pide permiso para leer música → "Permitir"
+  3. La app escanea tu biblioteca automáticamente
+  4. Tus MP3 aparecen en la lista
+  5. Toca una canción → ¡suena!
+
+  Los controles físicos del celular (botones laterales
+  de volumen/media) y la pantalla de bloqueo funcionan
+  automáticamente.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  SI ALGO SALE MAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Error en Actions (círculo rojo):
+    Clic en el workflow fallido → clic en "build"
+    Copia el texto del error y muéstramelo.
+    Lo resolvemos juntos.
+
+  La APK se instala pero no muestra canciones:
+    Asegúrate que tus MP3 estén en la carpeta
+    "Music" del almacenamiento interno del celular.
+    Android indexa la música ahí.
+
+  "App no instalada" al intentar instalar:
+    Prueba desinstalar cualquier versión anterior
+    de LocalPlay primero.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Hecho con ♪ — sin Android Studio, sin programación.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

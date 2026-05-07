@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Paleta principal — oscura, igual que la PWA -->
+    <color name="bg">#0E0E1A</color>
+    <color name="surface">#181828</color>
+    <color name="surface2">#222236</color>
+    <color name="divider">#18182C</color>
+
+    <!-- Acento morado -->
+    <color name="accent">#7C6AFF</color>
+    <color name="accent_dark">#4A3FBB</color>
+
+    <!-- Textos -->
+    <color name="text_primary">#EEEEFF</color>
+    <color name="text_muted">#8888AA</color>
+    <color name="text_dim">#555570</color>
+
+    <!-- Alias para Material Theme -->
+    <color name="colorPrimary">@color/accent</color>
+    <color name="colorPrimaryDark">@color/accent_dark</color>
+    <color name="colorAccent">@color/accent</color>
+</resources>

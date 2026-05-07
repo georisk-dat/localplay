@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LocalPlay</string>
+    <string name="channel_name">Reproducción de música</string>
+    <string name="channel_desc">Controles de reproducción de LocalPlay</string>
+</resources>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:paddingStart="14dp"
+    android:paddingEnd="14dp"
+    android:background="@drawable/item_selector"
+    android:clickable="true"
+    android:focusable="true">
+
+    <!-- Número / indicador de reproducción -->
+    <TextView
+        android:id="@+id/trackNumber"
+        android:layout_width="24dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:gravity="end"
+        android:textColor="@color/text_dim"
+        android:textSize="11sp"
+        android:text="1"/>
+
+    <!-- Info: título + artista -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/trackTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/item_title_selector"
+            android:textSize="13sp"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:text="Pista"/>
+
+        <TextView
+            android:id="@+id/trackArtist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_muted"
+            android:textSize="11sp"
+            android:singleLine="true"
+            android:ellipsize="end"/>
+    </LinearLayout>
+
+    <!-- Duración -->
+    <TextView
+        android:id="@+id/trackDuration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/text_dim"
+        android:textSize="11sp"
+        android:text="0:00"/>
+
+</LinearLayout>

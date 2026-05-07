@@ -1,0 +1,11 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp" android:height="200dp" android:viewportWidth="200" android:viewportHeight="200">
+    <path android:fillColor="#181828" android:pathData="M0,0h200v200H0z"/>
+    <!-- Vinyl record -->
+    <path android:fillColor="#222236" android:pathData="M100,20 a80,80 0 1,0 0.001,0z"/>
+    <path android:fillColor="#181828" android:pathData="M100,50 a50,50 0 1,0 0.001,0z"/>
+    <path android:fillColor="#7C6AFF" android:pathData="M100,75 a25,25 0 1,0 0.001,0z"/>
+    <path android:fillColor="#0E0E1A" android:pathData="M100,92 a8,8 0 1,0 0.001,0z"/>
+    <!-- Play triangle -->
+    <path android:fillColor="#FFFFFF" android:fillAlpha="0.6" android:pathData="M91,86 L91,114 L115,100 Z"/>
+</vector>
